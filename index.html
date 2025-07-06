@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskManager</title>
+</head>
+<body class="bg-sky-200">
+  <div id="login-cadastro" class="bg-neutral-50 rounded-xl m-10 p-10">
+    <h1 class="text-2xl font-bold text-blue-500 text-center">TaskManager</h1>
+    <ul class="flex my-5 gap-5 bg-neutral-200 p-2 rounded-xl">
+      <li id="login" onclick="login()" class="login bg-neutral-50 text-blue-500 font-bold p-2 px-5 rounded-xl">Login</li>
+      <span class="divisoria self-center">|</span>
+      <li id="cadastro" onclick="cadastro()" class="cadastro text-neutral-500 font-bold p-2 px-5 rounded-xl">Cadastro</li>
+    </ul>
+  
+    <!-- Formulário Login -->
+    <form id="formLogin" class="" action="">
+    <label class="text-xl" for="emailLogin">Email:</label>
+    <input class="border border-neutral-300 my-2 p-2 rounded-lg w-full" type="email" name="emailLogin" required>
+
+    <label class="text-xl" for="senhaLogin">Senha:</label>
+    <input class="border border-neutral-300 my-2 p-2 rounded-lg w-full" type="password" name="senhaLogin" required>
+
+    <button class="bg-blue-500 text-neutral-50 font-bold rounded-xl w-full mt-3 p-4" type="submit">Entrar</button>
+    </form>
+
+    <!-- Formulário Cadastro -->
+    <form id="formCadastro" class="hidden" action="cadastroUsuario()">
+      <label class="text-xl" for="nomeCadastro">Nome e Completo:</label>
+      <input class="border border-neutral-300 my-2 p-2 rounded-lg w-full" type="email" name="nomeCadastro" required>
+      
+      <label class="text-xl" for="emailLogin">Email:</label>
+      <input class="border border-neutral-300 my-2 p-2 rounded-lg w-full" type="email" name="emailLogin" required>
+
+      <label class="text-xl" for="senhaCadastro">Senha:</label>
+      <input class="border border-neutral-300 my-2 p-2 rounded-lg w-full" type="password" name="senhaCadastro" required>
+
+      <label class="text-xl" for="confirmarSenha">Confirmar Senha:</label>
+      <input class="border border-neutral-300 my-2 p-2 rounded-lg w-full" type="password" name="confirmarSenha" required>
+
+      <button class="bg-green-600 text-neutral-50 font-bold rounded-xl w-full mt-3 p-4" type="submit">Criar Conta</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
