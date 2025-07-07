@@ -47,3 +47,30 @@ async function cadastroUsuario(event) {
     });
   }
 }
+
+async function loginUsuario(event) {
+  event.preventDefault()
+
+  const email = $('[name="emailLogin"]').val();
+  const senha = $('[name="senhaLogin"]').val();
+  const login = {
+    email: email,
+    senha: senha
+  }
+
+  const response = await fetch('http://localhost:3000/login', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(login)
+  })
+  const respostaServidor = await response.json();
+  if (respostaServidor.message === 'sucess')
+    window.location.href = 'listas.html'
+  else {
+    Swal.fire ({
+      icon: respostaServidor.icon,
+      title: respostaServidor.title,
+      text: respostaServidor.text
+    })
+  }
+}

@@ -9,10 +9,12 @@ router.post('/', (req, res) => {
   const values = [email, senha];
 
   db.query(sql, values, (err, result) => {
-    if (err) {
-      res.status(202).json ({ icon: 'error', title: 'Falha ao entrar', text: 'Login ou senha invalidos! Tente novamente.' });
+    if (err || result.length === 0) {
+      res.status(401).json ({ icon: 'error', title: 'Falha ao entrar', text: 'Login ou senha invalidos! Tente novamente.' });
     } else {
-      window.location.href = 'listas.html'
+      res.status(200).json ({ message: 'sucess' })
     }
   })
 })
+
+module.exports = router;

@@ -17,7 +17,7 @@ router.post('/', (req, res) => {
   db.query(sql, values, (error, result) => {
     if (error) {
       console.error('Erro ao cadastrar usuário:', error);
-      res.status(500).json({ icon: "error", title: "Erro ao cadastrar", text: "Houve um erro ao cadastrar o usuário" });
+      res.status(500).json({ icon: "error", title: "Erro ao cadastrar", text: "Este email já está em uso." });
       // Modelo SweetAlert para o front-end
     }
     else {
