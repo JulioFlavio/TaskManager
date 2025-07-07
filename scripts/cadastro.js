@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 // POST - Cadastro de novo usuario
 router.post('/', (req, res) => {
   const {nomeCompleto, email, senha} = req.body;
-  const sql = 'INSERT INTO Usuarios (nomeCompleto, email, senha_hash) VALUES (?, ?, ?)';
+  const sql = 'INSERT INTO Usuarios (nome, email, senha) VALUES (?, ?, ?)';
   const values = [nomeCompleto, email, senha];
 
   db.query(sql, values, (error, result) => {

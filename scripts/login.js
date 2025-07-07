@@ -5,7 +5,7 @@ const db = require('./connection');
 // POST - Login de usuário
 router.post('/', (req, res) => {
   const {email, senha} = req.body;
-  const sql = 'SELECT * FROM Usuarios WHERE email = ? AND senha_hash = ?';
+  const sql = 'SELECT * FROM Usuarios WHERE email = ? AND senha = ?';
   const values = [email, senha];
 
   db.query(sql, values, (err, result) => {
