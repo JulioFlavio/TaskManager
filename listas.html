@@ -15,18 +15,22 @@
   <!-- Tarefas Overview -->
   <div class="grid grid-cols-2 gap-3">
     <div class="bg-neutral-50 rounded-xl shadow shadow-lg ml-10 p-5">
-      <span class="text-2xl text-purple-800 font-bold">12</span>
-      <br>
-      <span class="text-lg">Total de Tarefas</span>
+      <button id="btnTotal" onclick="mostraTotal()">
+        <span class="text-lg">Total de Tarefas</span>
+        <br>
+        <span class="text-2xl text-purple-800 font-bold">12</span>
+      </button>
     </div>
 
     <div class="bg-neutral-50 rounded-xl shadow shadow-lg mr-10 p-5">
-      <span class="text-2xl text-green-600 font-bold">8</span>
-      <br>
-      <span class="text-lg">Concluídas</span>
+      <button id="btnConcluidas" onclick="mostraConcluidas()">
+        <span class="text-lg">Tarefas Concluídas</span>
+        <br>
+        <span class="text-2xl text-green-600 font-bold">8</span>
+      </button>
     </div>
 
-    <div class="bg-neutral-50 rounded-xl shadow shadow-lg ml-10 p-5">
+    <!-- <div class="bg-neutral-50 rounded-xl shadow shadow-lg ml-10 p-5">
       <span class="text-2xl text-yellow-600 font-bold">3</span>
       <br>
       <span class="text-lg">Andamento</span>
@@ -36,7 +40,7 @@
       <span class="text-2xl text-red-600 font-bold">1</span>
       <br>
       <span class="text-lg">Atrasadas</span>
-    </div>
+    </div> -->
   </div>
 
   <div class="bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 p-5">
@@ -44,60 +48,93 @@
     <input type="search" name="" id="" placeholder="Nome da tarefa..." class="border placeholder-gray-500 border-neutral-300 rounded-lg w-full p-1 px-3">
   </div>
 
-  <div class="bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 overflow-x-auto">
+  <!-- TODAS as tarefas do usuário -->
+  <div id="totalTarefas" class="hidden bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 overflow-x-auto">
     <table class="table-auto w-full">
-      <thead class="bg-sky-400 text-white rounded-xl">
+      <thead class="bg-purple-800 text-white rounded-xl">
         <tr>
           <th class="p-3 text-lg text-left rounded-tl-xl">Nome</th>
           <th class="p-3 text-lg text-left">Data Criada</th>
         </tr>
       </thead>
       <tbody>
-        <!-- Tarefa 1 -->
+        
         <tr class="bg-white shadow rounded-xl">
           <td class="p-3">
-            <h1 class="text-lg font-semibold">Lavar Louça</h1>
+            <div class="flex gap-3">
+              <input type="checkbox" name="" id="">
+              <h1 class="text-md font-semibold">Lavar Louça</h1>
+            </div>
             <p class="text-sm text-gray-600">Limpar as vasilhas e os talheres</p>
           </td>
           <td class="p-3 align-top text-sm">20/07/2012</td>
         </tr>
 
-        <tr class="bg-white">
-          <td colspan="2" class="p-3">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <button class="bg-neutral-300 hover:bg-neutral-400 text-sm font-bold rounded-lg py-2">Editar</button>
-              <button class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold rounded-lg py-2">Duplicar</button>
-              <button class="bg-green-500 hover:bg-green-600 text-white text-sm font-bold rounded-lg py-2">Concluir</button>
-              <button class="bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-lg py-2">Apagar</button>
+        <tr class="bg-white shadow rounded-xl">
+          <td class="p-3">
+            <div class="flex gap-3">
+              <input type="checkbox" name="" id="">
+              <h1 class="text-md font-semibold">Lavar Louça</h1>
             </div>
+            <p class="text-sm text-gray-600">Limpar as vasilhas e os talheres</p>
           </td>
+          <td class="p-3 align-top text-sm">20/07/2012</td>
         </tr>
 
-        <!-- Tarefa 2 -->
-        <tr class="bg-gray-50 shadow rounded-xl">
-          <td class="p-3">
-            <h1 class="text-lg font-semibold">Witchy Woman</h1>
-            <p class="text-sm text-gray-600">Música da banda The Eagles</p>
-          </td>
-          <td class="p-3 align-top text-sm">23/08/2023</td>
-        </tr>
-        <tr class="bg-gray-50">
-          <td colspan="2" class="p-3">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <button class="bg-neutral-300 hover:bg-neutral-400 text-sm font-bold rounded-lg py-2">Editar</button>
-              <button class="bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-bold rounded-lg py-2">Duplicar</button>
-              <button class="bg-green-500 hover:bg-green-600 text-white text-sm font-bold rounded-lg py-2">Concluir</button>
-              <button class="bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-lg py-2">Apagar</button>
-            </div>
-          </td>
-        </tr>
       </tbody>
     </table>
   </div>
 
+  <!-- Tarefas Concluídas -->
+  <div id="tarefasConcluidas" class="hidden bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 overflow-x-auto">
+    <table class="table-auto w-full">
+      <thead class="bg-green-600 text-white rounded-xl">
+        <tr>
+          <th class="p-3 text-lg text-left rounded-tl-xl">Nome</th>
+          <th class="p-3 text-lg text-left">Data Criada</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr class="bg-white shadow rounded-xl">
+          <td class="p-3">
+            <div class="flex gap-3">
+              <input type="checkbox" checked name="" id="">
+              <h1 class="text-md font-semibold">Lavar Louça</h1>
+            </div>
+            <p class="text-sm text-gray-600">Limpar as vasilhas e os talheres</p>
+          </td>
+          <td class="p-3 align-top text-sm">20/07/2012</td>
+        </tr>
+
+        <tr class="bg-white shadow rounded-xl">
+          <td class="p-3">
+            <div class="flex gap-3">
+              <input type="checkbox" checked name="" id="">
+              <h1 class="text-md font-semibold">Lavar Louça</h1>
+            </div>
+            <p class="text-sm text-gray-600">Limpar as vasilhas e os talheres</p>
+          </td>
+          <td class="p-3 align-top text-sm">20/07/2012</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
     
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script>
     console.log(localStorage.getItem('user'))
+
+    function mostraTotal() {
+      $('#tarefasConcluidas').addClass('hidden');
+      $('#totalTarefas').removeClass('hidden');
+    }
+
+    function mostraConcluidas() {
+      $('#totalTarefas').addClass('hidden');
+      $('#tarefasConcluidas').removeClass('hidden');
+    }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </body>
