@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
     if (err || result.length === 0) {
       res.status(401).json ({ icon: 'error', title: 'Falha ao entrar', text: 'Login ou senha invalidos! Tente novamente.' });
     } else {
-      res.status(200).json ({ message: 'sucess' })
+      res.status(200).json ({ message: 'sucess', id: result[0].id, nome: result[0].nome })
     }
   })
 })

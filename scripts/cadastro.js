@@ -2,12 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('./connection');
 
-router.get('/', (req, res) => {
-  // const { nome, email, senha } = req.body;
-  // console.log(`Nome: ${nome}\nEmail: ${email}\nSenha: ${senha}`)
-  res.send('Tá funcionando');
-});
-
 // POST - Cadastro de novo usuario
 router.post('/', (req, res) => {
   const {nomeCompleto, email, senha} = req.body;

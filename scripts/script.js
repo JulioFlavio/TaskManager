@@ -1,6 +1,3 @@
-const { text } = require("express");
-const { event } = require("jquery");
-
 function cadastro() {
   $("#formCadastro").removeClass("hidden");
   $("#formLogin").addClass("hidden");
@@ -25,7 +22,11 @@ async function cadastroUsuario(event) {
   const confirmarSenha = $('[name="confirmarSenha"]').val();
 
   if (!(senha == confirmarSenha)) {
-    alert("As senhas não coincidem!")
+    Swal.fire ({
+      icon: 'error',
+      title: 'Erro ao registrar!',
+      text: 'As senhas não coincidem.'
+    })
   } else {
     const usuario = {
       nomeCompleto: nome,
@@ -64,8 +65,10 @@ async function loginUsuario(event) {
     body: JSON.stringify(login)
   })
   const respostaServidor = await response.json();
-  if (respostaServidor.message === 'sucess')
+  if (respostaServidor.message === 'sucess') {
+    localStorage.setItem('user', JSON.stringify(respostaServidor))
     window.location.href = 'listas.html'
+  }
   else {
     Swal.fire ({
       icon: respostaServidor.icon,
