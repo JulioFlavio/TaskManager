@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 // Rotas (localhost:3000/rota)
 app.use('/cadastro', require('./cadastro.js'))
 app.use('/login', require('./login.js'))
+app.use('/tarefas', require('./tarefas.js'))
 
 ///////////////////////////////
 
