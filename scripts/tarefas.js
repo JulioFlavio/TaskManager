@@ -23,9 +23,9 @@ router.post('/', (req, res) => {
 
 // POST - Cadastrar nova tarefa
 router.post('/add', (req, res) => {
-  const { nomeTarefa, descricaoTarefa, categoriaTarefa, idUsuario } = req.body;
-  const sql = 'INSERT INTO Tarefas (nome, descricao, categoria, id_user) VALUES (?, ?, ?, ?)'
-  const values = [nomeTarefa, descricaoTarefa, categoriaTarefa, idUsuario]
+  const { nome, descricao, categoria, prioridade, data, idUsuario } = req.body;
+  const sql = 'INSERT INTO Tarefas (nome, descricao, categoria, prioridade, data_limite, id_user) VALUES (?, ?, ?, ?, ?, ?)'
+  const values = [nome, descricao, categoria, prioridade, data, idUsuario]
 
   db.query(sql, values, (err, result) => {
     if (err) {
@@ -43,13 +43,14 @@ router.delete('/', (req, res) => {
   const { id } = req.body
   const sql = 'DELETE FROM Tarefas WHERE Tarefas.id = ?';
   const values = [id]
+  console.log(req.body)
 
   db.query(sql, values, (err, result) => {
     if (err) {
       console.log("Erro ao deletar tarefa: ", err);
       res.status(500).json({ message: 'Erro ao deletar tarefa' })
     } else {
-      console.log("Tarefa deletada com sucesso.")
+      // console.log("Tarefa deletada com sucesso.")
       res.status(200).json({ message: "Tarefa deletada com sucesso" })
     }
   })
