@@ -8,9 +8,21 @@ create table Usuarios (
     senha varchar(255) not null
 );
 
-create table Listas (
+create table Tarefas (
 	id integer primary key auto_increment,
     nome varchar(255) not null,
-    fk_user int,
-    foreign key (fk_user) references Usuarios(id)
+    descricao varchar(255),
+    id_user int,
+    foreign key (id_user) references Usuarios(id)
 );
+
+DELIMITER $$
+
+    CREATE TRIGGER set_data_criacao
+    BEFORE INSERT ON Tarefas
+    FOR EACH ROW
+    BEGIN
+    SET NEW.data_criacao = CURDATE();
+    END$$
+
+DELIMITER ;
