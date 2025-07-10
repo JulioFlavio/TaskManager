@@ -6,29 +6,34 @@
   <title>TaskManager</title>
 </head>
 <body class="bg-sky-200">
+
+  <div class="bg-neutral-50 rounded-xl shadow shadow-lg m-10 p-5">
+    <span id="nomeUser" class="text-2xl"></span>
+  </div>
+
   <div class="grid grid-cols-2 bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 p-5">
     <span class="col-start-1 text-2xl text-blue-500 font-bold">TaskManager</span>
     <p class="col-start-1 text-sm text-stone-600 m-2">Organize e acompanhe suas atividades.</p>
-    <button class="col-start-2 bg-blue-500 font-bold rounded-lg m-2 my-3">+ Nova Tarefa</button>
+    <button onclick="adicionarTarefa()" class="col-start-2 text-neutral-50 bg-blue-500 font-bold rounded-lg m-2 my-3">+ Nova Tarefa</button>
   </div>
 
   <!-- Tarefas Overview -->
-  <div class="grid grid-cols-2 gap-3">
-    <div class="bg-neutral-50 rounded-xl shadow shadow-lg ml-10 p-5">
+  <!-- <div class="grid grid-cols-2 gap-3"> -->
+    <div class="bg-neutral-50 rounded-xl shadow shadow-lg text-center mx-10 p-5">
       <button id="btnTotal" onclick="mostraTotal()">
         <span class="text-lg">Tarefas não realizadas</span>
         <br>
-        <span class="text-2xl text-purple-800 font-bold">12</span>
+        <span id="naoRealizadas" class="text-2xl text-purple-800 font-bold">12</span>
       </button>
     </div>
 
-    <div class="bg-neutral-50 rounded-xl shadow shadow-lg mr-10 p-5">
+    <!-- <div class="bg-neutral-50 rounded-xl shadow shadow-lg mr-10 p-5">
       <button id="btnConcluidas" onclick="mostraConcluidas()">
         <span class="text-lg">Tarefas Concluídas</span>
         <br>
-        <span class="text-2xl text-green-600 font-bold">8</span>
+        <span id="realizadas" class="text-2xl text-green-600 font-bold">8</span>
       </button>
-    </div>
+    </div> -->
 
     <!-- <div class="bg-neutral-50 rounded-xl shadow shadow-lg ml-10 p-5">
       <span class="text-2xl text-yellow-600 font-bold">3</span>
@@ -41,15 +46,15 @@
       <br>
       <span class="text-lg">Atrasadas</span>
     </div> -->
-  </div>
+  <!-- </div> -->
 
-  <div class="bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 p-5">
+  <!-- <div class="bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 p-5">
     Buscar Tarefa:
     <input type="search" name="" id="" placeholder="Nome da tarefa..." class="border placeholder-gray-500 border-neutral-300 rounded-lg w-full p-1 px-3">
-  </div>
+  </div> -->
 
   <!-- TODAS as tarefas do usuário -->
-  <div id="totalTarefas" class="hidden bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 overflow-x-auto">
+  <div id="totalTarefas" class=" bg-neutral-50 rounded-xl shadow shadow-lg m-10 my-5 overflow-x-auto">
     <table class="table-auto w-full">
       <thead class="bg-purple-800 text-white rounded-xl">
         <tr>
@@ -91,6 +96,7 @@
       <thead class="bg-green-600 text-white rounded-xl">
         <tr>
           <th class="p-3 text-lg text-left rounded-tl-xl">Nome</th>
+          <th class="p-3 text-lg text-left">Categoria</th>
           <th class="p-3 text-lg text-left">Data Criada</th>
         </tr>
       </thead>
@@ -113,17 +119,19 @@
               <input type="checkbox" checked name="" id="">
               <h1 class="text-md font-semibold">Lavar Louça</h1>
             </div>
-            <p class="text-sm text-gray-600">Limpar as vasilhas e os talheres</p>
           </td>
+          <td class="p-3 align-top text-sm">Categoria</td>
           <td class="p-3 align-top text-sm">20/07/2012</td>
         </tr>
+        <tr><td colspan="2"><p class="text-sm text-gray-600">Limpar as vasilhas e os talheres</p></td></tr>
 
       </tbody>
     </table>
   </div>
     
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="scripts/listas.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="scripts/listas.js"></script>
 </body>
 </html>

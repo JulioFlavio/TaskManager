@@ -21,6 +21,23 @@ router.post('/', (req, res) => {
   })
 });
 
+// POST - Cadastrar nova tarefa
+router.post('/add', (req, res) => {
+  const { nomeTarefa, descricaoTarefa, categoriaTarefa, idUsuario } = req.body;
+  const sql = 'INSERT INTO Tarefas (nome, descricao, categoria, id_user) VALUES (?, ?, ?, ?)'
+  const values = [nomeTarefa, descricaoTarefa, categoriaTarefa, idUsuario]
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.log('Erro ao cadastrar nova tarefa: ', err)
+      res.status(500).json({ message: 'Erro ao cadastrar nova tarefa' });
+    } else {
+      console.log('Tarefa cadastrada com sucesso!');
+      res.status(200).json({ message: 'Tarefa cadastrada com sucesso!' })
+    }
+  })
+})
+
 // DELETE - Método para deletar uma tarefa específica do usuario
 router.delete('/', (req, res) => {
   const { id } = req.body
